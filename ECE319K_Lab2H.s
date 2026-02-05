@@ -2,7 +2,7 @@
 // Your solution to Lab 2 in assembly code
 // Author: Ronit Verma
 // Last Modified: 2/1/2026
-// ECE319H Spring 2026 (ECE319K students do Lab2)
+// ECE319H Spring 2026 
 
     .include "../inc/msp.s"
 
@@ -15,7 +15,7 @@
         .thumb
         .align 2
         .global EID
-EID:    .string "RV24923" // replace ZZZ123 with your EID here
+EID:    .string "******" // replace ZZZ123 with your EID here
         .align 2
   .equ dot,100
   .equ dash,(3*dot)
@@ -70,7 +70,7 @@ Lab2:
     BL   Lab2Init   // you initialize input pin and output pin
 Loop:   
     MOVS R0, #10  // 0 for info, 1 debug with logic analyzer, 2 debug with scope, 10 for grade   
-    BL   Lab2Grader      
+    BL   Lab2Grader              // The Lab2Grader is includes in MSMP0_Valvanoware
     BL   Button_on_then_off     // Use polling to check when the button is on and then off
     BL   Letter_To_Morse
     B Loop
@@ -205,4 +205,5 @@ End_of_Morse:
 
 
 End:
+
     .end
