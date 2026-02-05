@@ -45,8 +45,10 @@ These skills directly support my interests in:
 ## Author
 ### Ronit Verma
 The University of Texas at Austin
-- Electrical & Computer Engineering Honors + Business Honors
-- LinkedIn: https://www.linkedin.com/in/ronit-verma-b0a80a383/
+
+Electrical & Computer Engineering Honors + Business Honors
+
+LinkedIn: https://www.linkedin.com/in/ronit-verma-b0a80a383/
 
 
 
