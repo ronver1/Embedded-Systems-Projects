@@ -12,11 +12,12 @@
         .thumb
         .align 2
         .global EID
-EID:    .string "RV24923" // Set my EID to the target EID
+EID:    .string "*******" // Set Student EID here
 
         .global Phase
         .align 2
 Phase:  .long 10 
+// These are related to the grader in MSPM0_Valvanoware
 // Phase= 0 will display your objective and some of the test cases, 
 // Phase= 1 to 5 will run one test case (the ones you have been given)
 // Phase= 6 to 7 will run one test case (the inputs you have not been given)
@@ -44,46 +45,46 @@ EID_one:
 Check_End:       
         CMP R2, #0              // Check is string is terminated
         BEQ Next_EID
-        B Try_R
+        B Try_*                // Read code in chronological order
         
-Try_R:
-        CMP R2, #82             // Compares to "R"
-        BEQ Try_V
+Try_*:
+        CMP R2, *             // Compares to first letter of EID
+        BEQ Try_*
         B Next_EID
-Try_V: 
-        ADDS R5, #1             // Next characterr
-        LDRB R2, [R1, R5]
-        CMP R2, #86             // Compares to "V"
-        BEQ Try_two_one
-        B Next_EID
-Try_two_one:
+Try_*: 
         ADDS R5, #1             // Next character
         LDRB R2, [R1, R5]
-        CMP R2, #50             // Compares to "2"
-        BEQ Try_four
+        CMP R2, *             // Compares to second letter of EID
+        BEQ *
         B Next_EID
-Try_four:
+Try_*:
         ADDS R5, #1             // Next character
         LDRB R2, [R1, R5]
-        CMP R2, #52             // Compares to "4"
-        BEQ Try_nine
+        CMP R2, *               // Compares to third letter of EID
+        BEQ Try_*
         B Next_EID
-Try_nine: 
+Try_*:
         ADDS R5, #1             // Next character
         LDRB R2, [R1, R5]
-        CMP R2, #57             // Compares to "9"
-        BEQ Try_two_two
+        CMP R2, *               // Compares to fourth letter of EID
+        BEQ Try_*
         B Next_EID
-Try_two_two: 
+Try_*: 
         ADDS R5, #1             // Next character
         LDRB R2, [R1, R5]
-        CMP R2, #50             // Compares to 2
-        BEQ Try_three
+        CMP R2, *              // Compares to fifth letter of EID
+        BEQ Try_*
         B Next_EID
-Try_three: 
+Try_*: 
         ADDS R5, #1             // Next character
         LDRB R2, [R1, R5]
-        CMP R2, #51             // Compares to 3
+        CMP R2, *              // Compares to sixth letter of EID
+        BEQ Try_*
+        B Next_EID
+Try_*: 
+        ADDS R5, #1             // Next character
+        LDRB R2, [R1, R5]
+        CMP R2, *              // Compares to seventh letter of EID
         BEQ EID_Found
         B Next_EID
 Next_EID:
@@ -121,3 +122,4 @@ pAB123:  .string "AB123"
 pXYZ1:   .string "XYZ1"
 pAB5549: .string "AB5549"
         .end
+
